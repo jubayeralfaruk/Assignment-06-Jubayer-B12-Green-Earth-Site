@@ -35,50 +35,26 @@ const allPlantsItem = () => {
     fetch("https://openapi.programming-hero.com/api/plants")
         .then(res => res.json())
         .then(data => {
-            const productListContainer = document.getElementById("productListContainer");
-            productListContainer.innerHTML =""
-            data.plants.forEach(obj => {
-                productListContainer.innerHTML += `
-                    <div id="${obj.id}" class="card bg-base-100 shadow-sm max-w-96">
-                        <div class="card-body p-4">
-                            <figure>
-                                <img class=''
-                                    src="${obj.image}" 
-                                    class="rounded-lg"
-                                />
-                            </figure>
-                            <h2 onclick="viewProductModal(${obj.id})" class="card-title cursor-pointer">${obj.name}</h2>
-                            <p>${obj.description}</p>
-                            <div class="flex justify-between items-center">
-                                <p class="">
-                                    <span class="bg-[#DCFCE7] text-[#15803D] rounded-full px-3 py-1  font-medium text-[14px]">
-                                        ${obj.category}
-                                    </span>
-                                </p>
-                                <span class="inline font-semibold text-[14px]">
-                                    ৳<span id="">${obj.price}</span>
-                                </span>
-                            </div>
-                            <div class="card-actions justify-end">
-                                <button id="addToCartBtnID" class="btn btn-primary bg-[#15803D] w-full border-none rounded-full text-[16px]">Add to Card</button>
-                            </div>
-                        </div>
-                    </div>
-                
-                `
-            })
-            
+            product(data)
         })
     removeBtnClass()
     document.getElementById(`category-btn-all`).classList.add("categoryStyle") 
 }
 
-// Product
+// Category Plant Product
 const categoryPlantsItem = (id) => {
     loadingSite()
     fetch(`https://openapi.programming-hero.com/api/category/${id}`)
         .then(res => res.json())
-        .then(data => {            
+        .then(data => {               
+            product(data)
+        })
+    removeBtnClass()
+    document.getElementById(`category-btn-${id}`).classList.add("categoryStyle")  
+}
+
+//Product Push in site
+function product(data) {
             const productListContainer = document.getElementById("productListContainer");
             productListContainer.innerHTML =""
             data.plants.forEach(obj => {
@@ -86,14 +62,14 @@ const categoryPlantsItem = (id) => {
                     <div id="${obj.id}" class="card bg-base-100 shadow-sm max-w-96">
                         <div class="card-body p-4">
                             <figure>
-                                <img class=''
+                                <img class='w-full max-h-[180px] object-cover rounded-xl'
                                     src="${obj.image}" 
                                     class="rounded-lg"
                                 />
                             </figure>
                             <h2 onclick="viewProductModal(${obj.id})" class="card-title cursor-pointer">${obj.name}</h2>
                             <p>${obj.description}</p>
-                            <div class="flex justify-between items-center">
+                            <div class="flex justify-between items-center mb-1">
                                 <p class="">
                                     <span class="bg-[#DCFCE7] text-[#15803D] rounded-full px-3 py-1  font-medium text-[14px]">
                                         ${obj.category}
@@ -110,11 +86,7 @@ const categoryPlantsItem = (id) => {
                     </div>
                 
                 `
-            })      
-            
-        })
-    removeBtnClass()
-    document.getElementById(`category-btn-${id}`).classList.add("categoryStyle")  
+            }) 
 }
 
 //Add to Card
