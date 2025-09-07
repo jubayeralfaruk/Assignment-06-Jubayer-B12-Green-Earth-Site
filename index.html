@@ -80,7 +80,7 @@
     <!-- Banner -->
      <section class="bg-[#CFF0DC] ">
         <div class="bannerBGImage mx-auto h-[390px] w-19/20 flex flex-col justify-center items-center">
-            <h1 class="text-[min(7vh,48px)] font-bold">Plant a Tree, Grow a Future</h1>
+            <h1 class="text-[min(7vh,48px)] font-bold text-center">Plant a Tree, Grow a Future</h1>
             <p class="text-center max-w-[583px]">
                 Join our mission to plant 1 million trees and make the Earth greener for future generations.
             </p>
@@ -93,16 +93,16 @@
         <h1 class="text-center text-[min(5vh,32px)] font-semibold mb-9">Choose Your Trees</h1>
         <section class="w-11/12 mx-auto grid grid-cols-6 gap-5">
             <!-- Category -->
-            <div class="col-span-1">
+            <div class="hidden md:block md:col-span-1">
                 <h4 class="text-[20px] font-semibold text-black mb-3">Categories</h4>
-                <ul id="categories-list" class="font-medium ">
-                    <li id="category-btn-all" onclick="allPlantsItem()" id="allPlants" class="rounded-md"><a class="block font-medium cursor-pointer w-full py-2 px-2  categoryBtnClass">All Trees</a></li>
+                <ul id="categories-list" class="font-medium space-y-2">
+                    <li id="category-btn-all" onclick="allPlantsItem()" id="allPlants" class="rounded-md hover:bg-green-600 hover:text-white transition duration-200 ease-in-out"><a class="block font-medium cursor-pointer w-full py-2 px-2  categoryBtnClass">All Trees</a></li>
                     
                 </ul>
             </div>
             <!-- Product -->
-            <div class="col-span-4">
-                <div id="productListContainer" class=" grid grid-cols-3 gap-4">
+            <div class="col-span-5 md:col-span-4 mx-auto">
+                <div id="productListContainer" class="grid grid-cols-2 lg:grid-cols-3 gap-4">
                     <!-- <div class="card bg-base-100 shadow-sm">
                         <div class="card-body p-4">
                             <figure>
@@ -145,11 +145,28 @@
                             </p>
                         </div>
                         <div class="">
-                            <span><i class="fa-solid fa-xmark text-[#8C8C8C] text-[16px]"></i></span>
+                            <span class="cursor-pointer"><i class="fa-solid fa-xmark text-[#8C8C8C] text-[16px]"></i></span>
                         </div>
                     </li>
                 </ul>
             </div>
+        </section>
+
+        <!-- Show Modal -->
+        <section>
+            <dialog id="product_modal" class="modal">
+                <div class="modal-box">
+                    <div id="model-container" class="">
+                        
+                    </div>
+                    <div class="modal-action">
+                        <form method="dialog">
+                            <!-- if there is a button in form, it will close the modal -->
+                            <button class="btn">Close</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
         </section>
     </main>
 
