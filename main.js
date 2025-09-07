@@ -39,7 +39,7 @@ const allPlantsItem = () => {
             productListContainer.innerHTML =""
             data.plants.forEach(obj => {
                 productListContainer.innerHTML += `
-                    <div class="card bg-base-100 shadow-sm max-w-96">
+                    <div id="${obj.id}" class="card bg-base-100 shadow-sm max-w-96">
                         <div class="card-body p-4">
                             <figure>
                                 <img class=''
@@ -78,12 +78,12 @@ const categoryPlantsItem = (id) => {
     loadingSite()
     fetch(`https://openapi.programming-hero.com/api/category/${id}`)
         .then(res => res.json())
-        .then(data => {
+        .then(data => {            
             const productListContainer = document.getElementById("productListContainer");
             productListContainer.innerHTML =""
             data.plants.forEach(obj => {
                 productListContainer.innerHTML += `
-                    <div class="card bg-base-100 shadow-sm max-w-96">
+                    <div id="${obj.id}" class="card bg-base-100 shadow-sm max-w-96">
                         <div class="card-body p-4">
                             <figure>
                                 <img class=''
@@ -118,20 +118,75 @@ const categoryPlantsItem = (id) => {
 }
 
 //Add to Card
-// document.getElementById("addToCartBtnID").addEventListener("click", (e) => {
+let arrListAddToCard = []
+document.getElementById("productListContainer").addEventListener("click", (e) => {
+    if (e.target.tagName === "BUTTON") {
+        const id = e.target.parentNode.parentNode.parentNode.id        
+        const title = e.target.parentNode.parentNode.children[1].innerText
+        const price = e.target.parentNode.parentNode.children[3].children[1].children[0].innerText
 
-//     // if (e.target === "BUTTON") {
-//     //     console.log("ok");
+        const existing = arrListAddToCard.find(obj => obj.id === id) 
+
+        if (existing) {
+            existing.quantity += 1;
+            existing.price = price * existing.quantity;
+        } else {
+            const obj = {
+                id: id,
+                title: title,
+                price: price,
+                quantity: 1
+            }
+            arrListAddToCard.push(obj)
+        }
+
+        const allPrice = arrListAddToCard.map(obj => {return obj.price});
+        const totalPrice = allPrice.reduce((acc,curr) => {return acc + curr});
+        document.getElementById("totalPrice").innerText = totalPrice      
+        addCardList(arrListAddToCard)
         
-//     // }
-// })
+    }
+});
+
+const addCardList = (arr) => {
+    const cardItemList = document.getElementById("cardItemList");
+        cardItemList.innerHTML =""
+        arr.forEach(obj => {
+                    cardItemList.innerHTML += `
+                        <li 
+                            class="rounded-md py-4 px-2 flex justify-between  items-center mb-2 bg-[#F0FDF4]">
+                            <div class="">
+                                <p class="text-[14px]">${obj.title}</p>
+                                <p class="text-[#8C8C8C]">
+                                    ৳<span>${obj.price}</span> 
+                                    x                            
+                                    <span>${obj.quantity}</span>
+                                </p>
+                            </div>
+                            <div class="">
+                                <span onclick="removeCardList('${obj.id}')" class="cursor-pointer"><i class="fa-solid fa-xmark text-[#8C8C8C] text-[16px]"></i></span>
+                            </div>
+                        </li>
+                    `
+                
+        })
+
+}
+
+function removeCardList(id) {
+    const newArr = arrListAddToCard.filter(obj => {return obj.id !== id});
+    arrListAddToCard = newArr;
+    console.log(arrListAddToCard);
+    
+    addCardList(arrListAddToCard)
+}
+
 
 // Modal show
 const viewProductModal = (id) => {
     fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
         .then(res => res.json())
         .then(data => {
-            console.log(data);
                 document.getElementById("model-container").innerHTML = `
                         <h3 class="text-3xl font-bold">
                             ${data.plants.name}

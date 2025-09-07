@@ -134,21 +134,13 @@
             <!-- add card -->
             <div class="col-span-1 rounded-xl bg-white p-3 ">
                 <h3 class="text-[20px] font-semibold text-black">Your Cart</h3>
-                <ul class="bg-[#F0FDF4]">
-                    <li class="rounded-md py-4 px-2 flex justify-between items-center">
-                        <div class="">
-                            <p class="text-[14px]">Mango Tree</p>
-                            <p class="text-[#8C8C8C]">
-                                ৳<span>500</span> 
-                                x                            
-                                <span>1</span>
-                            </p>
-                        </div>
-                        <div class="">
-                            <span class="cursor-pointer"><i class="fa-solid fa-xmark text-[#8C8C8C] text-[16px]"></i></span>
-                        </div>
-                    </li>
+                <ul id="cardItemList" class="border-b-1 border-gray-200">
+                    
                 </ul>
+                <div class="flex justify-between mt-1">
+                    <p class="text-[18px] font-medium">Total:</p>
+                    <p class="text-[18px] font-medium">৳<span id="totalPrice">0</span></p>
+                </div>
             </div>
         </section>
 
