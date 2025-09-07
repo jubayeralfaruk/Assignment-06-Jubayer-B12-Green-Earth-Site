@@ -29,6 +29,7 @@ function categoryBtnClass() {
 }
 
 const allPlantsItem = () => {
+    loadingSite()
     fetch("https://openapi.programming-hero.com/api/plants")
         .then(res => res.json())
         .then(data => {
@@ -72,6 +73,7 @@ const allPlantsItem = () => {
 
 // category Product
 const categoryPlantsItem = (id) => {
+    loadingSite()
     fetch(`https://openapi.programming-hero.com/api/category/${id}`)
         .then(res => res.json())
         .then(data => {
@@ -117,5 +119,18 @@ const viewProduct = () => {
     
 }
 
+
+
+
+// Loading
+function loadingSite() {
+    const productListContainer = document.getElementById("productListContainer");
+    productListContainer.innerHTML = `
+        <div class="col-span-full mx-auto">
+            <span class="loading loading-dots loading-xl "></span>
+        </div>
+            
+    `
+}
 allPlantsItem()
 categoriesApiShow()
