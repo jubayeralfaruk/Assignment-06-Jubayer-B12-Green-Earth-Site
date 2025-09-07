@@ -140,7 +140,7 @@ document.getElementById("productListContainer").addEventListener("click", (e) =>
             arrListAddToCard.push(obj)
         }
 
-        const allPrice = arrListAddToCard.map(obj => {return obj.price});
+        const allPrice = arrListAddToCard.map(obj => {return Number(obj.price)});
         const totalPrice = allPrice.reduce((acc,curr) => {return acc + curr});
         document.getElementById("totalPrice").innerText = totalPrice      
         addCardList(arrListAddToCard)
