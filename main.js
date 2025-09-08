@@ -32,7 +32,7 @@ function removeBtnClass() {
 // All Plants Product
 const allPlantsItem = () => {
     loadingSite()
-    fetch("https://openapi.programming-hero.com/api/plants")
+    fetch("ttps://openapi.programming-hero.com/api/plants")
         .then(res => res.json())
         .then(data => {
             product(data)
@@ -112,9 +112,11 @@ document.getElementById("productListContainer").addEventListener("click", (e) =>
             arrListAddToCard.push(obj)
         }
 
+        // total
         const allPrice = arrListAddToCard.map(obj => {return Number(obj.price)});
         const totalPrice = allPrice.reduce((acc,curr) => {return acc + curr});
-        document.getElementById("totalPrice").innerText = totalPrice      
+        document.getElementById("totalPrice").innerText = totalPrice;
+
         addCardList(arrListAddToCard)
         
     }
@@ -146,11 +148,19 @@ const addCardList = (arr) => {
 }
 
 function removeCardList(id) {
+    document.getElementById("totalPrice").innerText = '0';
     const newArr = arrListAddToCard.filter(obj => {return obj.id !== id});
     arrListAddToCard = newArr;
     console.log(arrListAddToCard);
+    addCardList(arrListAddToCard);
+    addCardList(arrListAddToCard);
+
+    // total
+    const allPrice = arrListAddToCard.map(obj => {return Number(obj.price)});
+    const totalPrice = allPrice.reduce((acc,curr) => {return acc + curr});
+    document.getElementById("totalPrice").innerText = totalPrice;
     
-    addCardList(arrListAddToCard)
+
 }
 
 
