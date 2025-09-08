@@ -109,28 +109,29 @@ document.getElementById("productListContainer").addEventListener("click", (e) =>
 
         if (existing) {
             existing.quantity += 1;
-            existing.price = price * existing.quantity;
+            existing.priceTotal = price * existing.quantity;
         } else {
             const obj = {
                 id: id,
                 title: title,
                 price: price,
+                priceTotal: price,
                 quantity: 1
             }
             arrListAddToCard.push(obj)
         }
 
         // total
-        const allPrice = arrListAddToCard.map(obj => {return Number(obj.price)});
+        const allPrice = arrListAddToCard.map(obj => {return Number(obj.priceTotal)});
         const totalPrice = allPrice.reduce((acc,curr) => {return acc + curr});
         document.getElementById("totalPrice").innerText = totalPrice;
 
-        addCardList(arrListAddToCard, price)
+        addCardList(arrListAddToCard)
         
     }
 });
 
-const addCardList = (arr, price) => {
+const addCardList = (arr) => {
     const cardItemList = document.getElementById("cardItemList");
         cardItemList.innerHTML =""
         arr.forEach(obj => {
@@ -140,7 +141,7 @@ const addCardList = (arr, price) => {
                             <div class="">
                                 <p class="text-[14px]">${obj.title}</p>
                                 <p class="text-[#8C8C8C]">
-                                    ৳<span>${price}</span> 
+                                    ৳<span>${obj.price}</span> 
                                     x                            
                                     <span>${obj.quantity}</span>
                                 </p>
