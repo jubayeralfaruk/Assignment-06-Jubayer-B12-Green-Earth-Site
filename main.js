@@ -18,7 +18,7 @@ const categoriesApiShow = () => {
                 const categoriesList = document.getElementById("categories-listMobile");
                 categoriesList.innerHTML += `
                     <a href="#product" onclick="categoryPlantsItem(${obj.id})" class="hover:bg-green-600 h-full hover:text-white transition duration-200 ease-in-out rounded-lg whitespace-nowrap">
-                        <span id="category-btn-${obj.id}" class="block font-medium cursor-pointer w-full py-2 px-2 rounded-md removeBtnClass">${obj.category_name}</span>
+                        <span id="category-btn-mobile-${obj.id}" class="block font-medium cursor-pointer w-full py-2 px-2 rounded-md removeBtnClassMobile">${obj.category_name}</span>
                     </a>
                 `
             })
@@ -34,6 +34,11 @@ function removeBtnClass() {
         cl.classList.remove("categoryStyle")
         document.getElementById(`category-btn-all`).classList.remove("categoryStyle")
     })
+    const categoryBtnMobile = document.querySelectorAll(".removeBtnClassMobile")
+    categoryBtnMobile.forEach(cl => {
+        cl.classList.remove("categoryStyle")
+        document.getElementById(`category-btn-all-mobile`).classList.remove("categoryStyle")
+    })
     
 }
 
@@ -46,7 +51,8 @@ const allPlantsItem = () => {
             product(data)
         })
     removeBtnClass()
-    document.getElementById(`category-btn-all`).classList.add("categoryStyle") 
+    document.getElementById(`category-btn-all`).classList.add("categoryStyle")
+    document.getElementById(`category-btn-all-mobile`).classList.add("categoryStyle") 
 }
 
 // Category Plant Product
@@ -59,6 +65,7 @@ const categoryPlantsItem = (id) => {
         })
     removeBtnClass()
     document.getElementById(`category-btn-${id}`).classList.add("categoryStyle")  
+    document.getElementById(`category-btn-mobile-${id}`).classList.add("categoryStyle")  
 }
 
 //Product Push in site
@@ -88,7 +95,7 @@ function product(data) {
                                 </span>
                             </div>
                             <div class="card-actions justify-end">
-                                <button id="addToCartBtnID" class="btn btn-primary bg-[#15803D] w-full border-none rounded-full text-[16px]">Add to Card</button>
+                                <button id="addToCartBtnID" class="btn btn-primary bg-[#15803D] w-full border-none rounded-full text-[16px] hover:bg-green-800 ">Add to Card</button>
                             </div>
                         </div>
                     </div>
@@ -140,7 +147,7 @@ const addCardList = (arr) => {
                             class="rounded-md py-4 px-2 flex justify-between  items-center mb-2 bg-[#F0FDF4]">
                             <div class="">
                                 <p class="text-[14px]">${obj.title}</p>
-                                <p class="text-[#8C8C8C]">
+                                <p class="text-[#8C8C8C] text-center">
                                     ৳<span>${obj.price}</span> 
                                     x                            
                                     <span>${obj.quantity}</span>
@@ -172,7 +179,6 @@ function removeCardList(id) {
 
 }
 
-
 // Modal show
 const viewProductModal = (id) => {
     fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
@@ -199,9 +205,6 @@ const viewProductModal = (id) => {
             document.getElementById("product_modal").showModal()
         })
 }
-
-
-
 
 // Loading
 function loadingSite() {
