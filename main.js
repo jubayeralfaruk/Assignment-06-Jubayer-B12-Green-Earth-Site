@@ -82,7 +82,7 @@ function product(data) {
                                     class="rounded-lg"
                                 />
                             </figure>
-                            <h2 onclick="viewProductModal(${obj.id})" class="card-title cursor-pointer">${obj.name}</h2>
+                            <h2 onclick="viewProductModal(${obj.id})" class="card-title cursor-pointer select-none">${obj.name}</h2>
                             <p>${obj.description}</p>
                             <div class="flex justify-between items-center mb-1">
                                 <p class="">
@@ -146,15 +146,15 @@ const addCardList = (arr) => {
                         <li 
                             class="rounded-md py-4 px-2 flex justify-between  items-center mb-2 bg-[#F0FDF4]">
                             <div class="">
-                                <p class="text-[14px]">${obj.title}</p>
-                                <p class="text-[#8C8C8C] text-center">
+                                <p class=" text-[min(3vh,14px)]">${obj.title}</p>
+                                <p class="text-[#8C8C8C] text-center text-[min(3vh,16px)]">
                                     ৳<span>${obj.price}</span> 
                                     x                            
                                     <span>${obj.quantity}</span>
                                 </p>
                             </div>
                             <div class="">
-                                <span onclick="removeCardList('${obj.id}')" class="cursor-pointer"><i class="fa-solid fa-xmark text-[#8C8C8C] text-[16px]"></i></span>
+                                <span onclick="removeCardList('${obj.id}')" class="cursor-pointer"><i class="fa-solid fa-xmark text-[#8C8C8C] text-[min(3vh,16px)]"></i></span>
                             </div>
                         </li>
                     `
@@ -172,7 +172,7 @@ function removeCardList(id) {
     addCardList(arrListAddToCard);
 
     // total
-    const allPrice = arrListAddToCard.map(obj => {return Number(obj.price)});
+    const allPrice = arrListAddToCard.map(obj => {return Number(obj.priceTotal)});
     const totalPrice = allPrice.reduce((acc,curr) => {return acc + curr});
     document.getElementById("totalPrice").innerText = totalPrice;
     
@@ -189,7 +189,7 @@ const viewProductModal = (id) => {
                             ${data.plants.name}
                         </h3>
                         <div class="">
-                            <img src="${data.plants.image}" alt="">
+                            <img class="w-full max-h-[300px] rounded-lg object-cover" src="${data.plants.image}" alt="">
                         </div>
                         <p class="text-lg">
                             <span class="font-semibold">Category: </span>${data.plants.category}

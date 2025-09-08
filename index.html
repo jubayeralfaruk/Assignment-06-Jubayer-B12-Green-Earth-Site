@@ -38,7 +38,7 @@
     <header class="bg-[#15803D]">
         <nav class="lg:w-11/12 mx-auto">
             <div class="navbar bg-[#15803D]">
-                <div class="navbar-start">
+                <div class="navbar-start -ml-2.5 ">
                     <div class="dropdown">
                     <div tabindex="0" role="button" class="btn btn-ghost lg:hidden hover:bg-[#033515]
                     hover:border-green-900 text-white">
@@ -66,7 +66,7 @@
                         <li><a>Plant a Tree</a></li>
                     </ul>
                 </div>
-                <div class="navbar-end">
+                <div class="navbar-end -mr-2.5">
                     <a class="btn text-[#15803D] bg-[#FACC15] rounded-full shadow-none hover:bg-yellow-500 hover:text-black">Plant a Tree</a>
                 </div>
                 </div>
@@ -75,11 +75,11 @@
     
     <!-- Banner -->
      <section class="bg-[#CFF0DC] ">
-        <div class="mx-auto h-[390px] w-19/20 flex flex-col justify-center items-center
+        <div class="mx-auto h-[380px] w-19/20 flex flex-col justify-center items-center
                     bg-[url('./assets/hero-leaf1.png')] 
                     md:bg-[url('./assets/hero-leaf1.png'),url('./assets/hero-leaf2.png')] 
                     bg-no-repeat bg-[position:left_bottom,right_bottom] 
-                    bg-[length:auto_100%] sm:bg-[length:auto_100%] md:bg-[length:auto_60%] lg:bg-[length:auto_70%] xl:bg-[length:auto_90%]
+                    bg-[length:auto_100%] sm:bg-[length:auto_100%] md:bg-[length:auto_60%] lg:bg-[length:auto_70%] xl:bg-[length:auto_90%] 2xl:bg-[length:auto_100%]
         ">
 
 
@@ -155,13 +155,13 @@
             </div>
             <!-- add card -->
             <div class="col-span-2 md:col-span-1 rounded-xl bg-white p-3 ">
-                <h3 class="text-[20px] font-semibold text-black">Your Cart</h3>
+                <h3 class="text-[min(3vh,18px)] font-semibold text-black">Your Cart</h3>
                 <ul id="cardItemList" class="border-b-1 border-gray-200">
                     
                 </ul>
-                <div class="flex justify-between mt-1">
-                    <p class="text-[18px] font-medium">Total:</p>
-                    <p class="text-[18px] font-medium">৳<span id="totalPrice">0</span></p>
+                <div class="mt-1 space-x-reverse relative">
+                    <p class="text-[min(3vh,18px)] inline font-medium">Total:</p>
+                    <p class="text-[min(3vh,18px)] absolute right-0 inline font-medium">৳<span id="totalPrice">0</span></p>
                 </div>
             </div>
         </section>
