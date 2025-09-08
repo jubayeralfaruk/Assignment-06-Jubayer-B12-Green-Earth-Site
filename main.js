@@ -14,6 +14,14 @@ const categoriesApiShow = () => {
                     </li>
                 `
             })
+            data.categories.forEach(obj => {
+                const categoriesList = document.getElementById("categories-listMobile");
+                categoriesList.innerHTML += `
+                    <a href="#product" onclick="categoryPlantsItem(${obj.id})" class="hover:bg-green-600 h-full hover:text-white transition duration-200 ease-in-out rounded-lg whitespace-nowrap">
+                        <span id="category-btn-${obj.id}" class="block font-medium cursor-pointer w-full py-2 px-2 rounded-md removeBtnClass">${obj.category_name}</span>
+                    </a>
+                `
+            })
             
             
         })
@@ -32,7 +40,7 @@ function removeBtnClass() {
 // All Plants Product
 const allPlantsItem = () => {
     loadingSite()
-    fetch("ttps://openapi.programming-hero.com/api/plants")
+    fetch("https://openapi.programming-hero.com/api/plants")
         .then(res => res.json())
         .then(data => {
             product(data)
