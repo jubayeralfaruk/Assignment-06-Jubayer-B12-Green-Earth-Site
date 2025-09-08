@@ -125,12 +125,12 @@ document.getElementById("productListContainer").addEventListener("click", (e) =>
         const totalPrice = allPrice.reduce((acc,curr) => {return acc + curr});
         document.getElementById("totalPrice").innerText = totalPrice;
 
-        addCardList(arrListAddToCard)
+        addCardList(arrListAddToCard, price)
         
     }
 });
 
-const addCardList = (arr) => {
+const addCardList = (arr, price) => {
     const cardItemList = document.getElementById("cardItemList");
         cardItemList.innerHTML =""
         arr.forEach(obj => {
@@ -140,7 +140,7 @@ const addCardList = (arr) => {
                             <div class="">
                                 <p class="text-[14px]">${obj.title}</p>
                                 <p class="text-[#8C8C8C]">
-                                    ৳<span>${obj.price}</span> 
+                                    ৳<span>${price}</span> 
                                     x                            
                                     <span>${obj.quantity}</span>
                                 </p>
