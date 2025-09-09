@@ -143,8 +143,7 @@ const addCardList = (arr) => {
         cardItemList.innerHTML =""
         arr.forEach(obj => {
                     cardItemList.innerHTML += `
-                        <li 
-                            class="rounded-md py-4 px-2 flex justify-between  items-center mb-2 bg-[#F0FDF4]">
+                        <li class="rounded-md py-4 px-2 flex justify-between  items-center mb-2 bg-[#F0FDF4] hover:shadow-xl hover:bg-[#ebf3ed]">
                             <div class="">
                                 <p class=" text-[min(3vh,14px)]">${obj.title}</p>
                                 <p class="text-[#8C8C8C] text-center text-[min(3vh,16px)]">
