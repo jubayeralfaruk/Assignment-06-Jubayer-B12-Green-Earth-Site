@@ -1,16 +1,20 @@
 
 # 1) What is the difference between var, let, and const?
 ## Answer: 
-### var(): #### var() is a global or function scoped variable. It is allowed redeclaration and reassignment.
+### var(): 
+#### The var() is a global or function scoped variable. It is allowed redeclaration and reassignment.
 
-### let(): #### let() is a block scoped variable. It is not allowed redeclaration but allowed reassignment.
+### let(): 
+#### The let() is a block scoped variable. It is not allowed redeclaration but allowed reassignment.
 
-### const(): #### const() is a block scoped variable. It is not allowed redeclaration and reassignment.
+### const(): 
+#### The const() is a block scoped variable. It is not allowed redeclaration and reassignment.
 
 
-#### 2) What is the difference between map(), forEach(), and filter()? 
-### Answer: 
-## map(): The map() method creates a new array by calling the provided function on every element in the calling array. 
+# 2) What is the difference between map(), forEach(), and filter()? 
+## Answer: 
+### map(): 
+#### The map() method creates a new array by calling the provided function on every element in the calling array. 
 
 ## forEach(): The forEach() method does not create a new array, but executes the provided function once for each element in the calling array.
 
