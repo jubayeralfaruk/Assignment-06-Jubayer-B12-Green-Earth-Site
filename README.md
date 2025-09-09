@@ -36,5 +36,5 @@
 # 5) Explain template literals in ES6. How are they different from string concatenation?
 ## Answer:
 #### -We can use template literals in ES6 to create strings with backticks (`) and insert variables using ${}.
-## They are cleaner and simpler than using '+' for string concatenation.
+#### -They are cleaner and simpler than using '+' for string concatenation.
 
